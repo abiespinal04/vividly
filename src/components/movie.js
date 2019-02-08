@@ -6,6 +6,7 @@ class Movie extends Component {
     
     state = {  
       movies : getMovies(),
+      currentPage: 1,
       pageSize : 4
     }
 
@@ -17,11 +18,12 @@ class Movie extends Component {
     }
     
     handlePageChange = (page) => {
-      console.log(page);
+      this.setState({currentPage:page})
     }
 
     render() { 
-      const{length:count} = this.state.movies
+      const{length:count} = this.state.movies;
+      const{pageSize,currentPage} = this.state;
       if(count === 0 ) return "There are no more movies in the database"
        
       return ( 
@@ -51,7 +53,8 @@ class Movie extends Component {
           </tbody>
           <Pagination 
           itemCounts={count} 
-          pageSize={this.state.pageSize}
+          pageSize={pageSize}
+          currentPage={currentPage}
           onPageChange={this.handlePageChange}
           />
           </table>
