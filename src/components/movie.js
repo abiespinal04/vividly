@@ -24,10 +24,11 @@ class Movie extends Component {
       this.setState({currentPage:page})
     }
 
-    handleLike = (liked)=>{
-
-      console.log("Like was clicked");
-     
+    //this method switches the heart icon from solid to plain
+    handleLike = (movie)=>{
+      movie.liked= !movie.liked;
+      this.setState({liked:movie.liked})
+    
     }
     render() { 
       const{length:count} = this.state.movies;
@@ -60,7 +61,7 @@ class Movie extends Component {
                 <td>{movie.genre.name}</td>
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
-                <td> <Liked liked={movie.liked} onClick={() =>this.handleLike(movie.Liked)}/></td>
+                <td> <Liked liked={movie.liked} onClick={() =>this.handleLike(movie)}/></td>
                 <td><button onClick ={() => this.handleDelete(movie)}className="btn btn-danger btn-sm">Delete</button></td>
               </tr>
                   ))}
