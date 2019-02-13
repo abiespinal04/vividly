@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Movie from './components/movie';
 
+
 import './App.css';
 
 class App extends Component {
@@ -10,7 +11,6 @@ class App extends Component {
       
       <div className="container">
         <Movie/>
-       
       </div>
     );
   }
